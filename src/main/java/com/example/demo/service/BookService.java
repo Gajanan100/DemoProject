@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.ListBookStatus;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.BookAuthorsData;
 
@@ -22,6 +23,8 @@ public interface BookService {
 	List<BookAuthorsData> getBookAutherData();
 	List<String>allbook();
 	List<String> Book_Author_Name1();
+	
+	public List<ListBookStatus> ListofBook(boolean status);
 
 	
 	

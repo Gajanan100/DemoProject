@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.custum.DueChargeDTO;
 import com.example.demo.custum.FindByUserName;
+import com.example.demo.custum.ListNoNReturnBook;
 import com.example.demo.custum.UserBookTransData;
 import com.example.demo.entity.TransactionHistory;
 
@@ -18,9 +20,11 @@ public interface TransHistoryService {
 	public Optional<TransactionHistory>getByIdTransactionHistory(int id);
 	public void deleteByTransactionHistory(int id);
 	public TransactionHistory addOrUpdateTransactionHistory(TransactionHistory transactionHistory);
-
-	public List<UserBookTransData> getUserBookTransData();
-	
+	public List<UserBookTransData> getUserBookTransData();	
 	public List<FindByUserName>getDataByUserName(String user_name);
 
+//	public void getDueChargeByID(int trans_id);
+	 public List<DueChargeDTO> getDueChargeByID(int trans_id);
+
+     List<ListNoNReturnBook> BookisReturnOrnot( boolean status);
 }

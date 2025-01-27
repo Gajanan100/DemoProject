@@ -28,7 +28,7 @@ public class UserMembershipController {
 
 	}
 
-	@PostMapping("/get-all-usermembership")
+	@GetMapping("/get-all-usermembership")
 	public List<UserMembership> getAllbookCopiesService() {
 		return userMembershipService.getallUserMembership();
 	}

@@ -14,7 +14,5 @@ public interface AuthorRepository extends JpaRepository<Author,Integer> {
 	
     @Query(value = "SELECT author_name FROM authortables;", nativeQuery = true)
 	List<String>getallAuthorName();
-    
-
 
 }

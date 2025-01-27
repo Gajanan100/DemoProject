@@ -17,9 +17,7 @@ public class FindByUserName {
 	public String userName;
 	public String password;
 	public Date borrow_date;
-	public Date late_date;
 	public Date return_date;
-	public double fineamount;
 
 
 

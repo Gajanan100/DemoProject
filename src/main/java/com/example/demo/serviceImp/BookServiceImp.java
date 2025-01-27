@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.ListBookStatus;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.BookAuthorsData;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.BookNotExistException;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
@@ -28,6 +28,7 @@ public class BookServiceImp implements BookService {
 		if (bookRepository.findById(book.getBook_id()).isPresent()) {
 			throw new BookNotExistException(book.getBook_id() + " is already present please try insert different id");
 		}
+		
 		return bookRepository.save(book);
 	}
 
@@ -90,6 +91,19 @@ public class BookServiceImp implements BookService {
 	@Override
 	public List<String> Book_Author_Name1() {
 		return bookRepository.Book_Author_Name1();
+	}
+
+	@Override
+	public List<ListBookStatus> ListofBook(boolean status) {
+	    String query = "SELECT book_name, status FROM booktables WHERE status = ?";
+	    return jdbcTemplate.query(
+	    		
+	        query, (rs, rowNum) -> new ListBookStatus(
+	            rs.getString("book_name"), 
+	            rs.getBoolean("status")
+	        ), 
+	        status
+	    );
 	}
 
 }

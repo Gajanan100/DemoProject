@@ -8,9 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.custum.FindBymembershipType;
-import com.example.demo.entity.BookCategory;
 import com.example.demo.entity.UserMembership;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.UserMemberShipNotFoundException;
 import com.example.demo.repository.UserMembershipRepository;
 import com.example.demo.service.UserMembershipService;
@@ -29,6 +27,9 @@ public class UserMembershipServiceImp implements UserMembershipService {
 		if (userMembershipRepository.findById(userMembership.getM_id()).isPresent()) {
 			throw new UserMemberShipNotFoundException("UserMemberShip All Ready Presents");
 		}
+		Integer maxCount=userMembershipRepository.findmaxCount();
+		
+	    userMembership.setM_id((maxCount == null ? 0 : maxCount + 1));
 		return userMembershipRepository.save(userMembership);
 	}
 

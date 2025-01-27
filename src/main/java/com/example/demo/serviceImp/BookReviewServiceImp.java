@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Book;
 import com.example.demo.entity.BookReview;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.BookReviewNotFoundException;
 import com.example.demo.repository.BookReviewRepository;
 import com.example.demo.service.BookReviewService;

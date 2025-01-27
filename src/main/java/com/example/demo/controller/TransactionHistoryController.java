@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.TransactionHistory;
 import com.example.demo.entity.User;
 import com.example.demo.service.TransHistoryService;
+import com.example.demo.custum.DueChargeDTO;
 import com.example.demo.custum.FindByUserName;
+import com.example.demo.custum.ListNoNReturnBook;
 import com.example.demo.custum.UserBookTransData;
 
 @RestController
@@ -31,7 +33,7 @@ public class TransactionHistoryController {
 
 	}
 
-	@PostMapping("/get-all-transactionHistory")
+	@GetMapping("/get-all-transactionHistory")
 	public List<TransactionHistory> getAllbookCopiesService() {
 		return transHistoryService.getallTransHistoryService();
 	}
@@ -62,9 +64,17 @@ public class TransactionHistoryController {
 		System.out.println("Hello....");
 	    System.out.println("Received username: " + user.getUserName());
 
-		return transHistoryService.getDataByUserName(user.getUserName());
+		return transHistoryService.getDataByUserName(user.getUserName());	
+	}
+	
+	@GetMapping("/find-due-id")
+	public List<DueChargeDTO> getDueChargeByID(@RequestBody TransactionHistory history) {
+		return transHistoryService.getDueChargeByID(history.getTrans_id());
+	}
+	
+	@PostMapping("/book-is-return")
+	public List<ListNoNReturnBook> bookisReturn(@RequestBody TransactionHistory history) {
+		return transHistoryService.BookisReturnOrnot(history.status);
 		
 	}
-
-
 }

@@ -3,9 +3,7 @@ package com.example.demo.serviceImp;
 import java.util.List;
 import java.util.Optional;
 
-import org.modelmapper.internal.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Author;
@@ -19,7 +17,6 @@ public class AuthorServiceImp implements AuthorService {
 	@Autowired
 	private AuthorRepository authorRepository;
 
-	private JdbcTemplate jdbcTemplate;
 
 	@Override
 	public Author addAuthor(Author author) {

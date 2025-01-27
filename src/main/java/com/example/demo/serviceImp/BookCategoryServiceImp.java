@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.BookCategory;
-import com.example.demo.entity.BookCopies;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.BookCategoryNotFoundException;
 import com.example.demo.repository.BookcategoryRespository;
 import com.example.demo.service.BookCategoryService;
@@ -24,6 +22,7 @@ public class BookCategoryServiceImp implements BookCategoryService {
 		if (bookcategoryRespository.findById(bookCategory.getBookcat_id()).isPresent()) {
 			throw new BookCategoryNotFoundException("BookCategory Already Presents..");
 		}
+		
 		return bookcategoryRespository.save(bookCategory);
 	}
 

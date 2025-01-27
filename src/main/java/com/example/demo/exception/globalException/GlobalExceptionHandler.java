@@ -2,12 +2,10 @@ package com.example.demo.exception.globalException;
 
 import java.util.List;
 
-import org.modelmapper.spi.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.demo.exception.AutherNotFoundException;
@@ -15,12 +13,16 @@ import com.example.demo.exception.BookCategoryNotFoundException;
 import com.example.demo.exception.BookCopiesNotFoundException;
 import com.example.demo.exception.BookNotExistException;
 import com.example.demo.exception.BookReviewNotFoundException;
+import com.example.demo.exception.BranchNotFoundException;
 import com.example.demo.exception.EmpRoleNotFoundException;
 import com.example.demo.exception.EmployeeNotFoundException;
 import com.example.demo.exception.LibraryNotFoundException;
 import com.example.demo.exception.TransHistoryNotFoundException;
 import com.example.demo.exception.UserMemberShipNotFoundException;
 import com.example.demo.exception.UserNotFoundException;
+import com.example.demo.exception.UserAllRedyPresent;
+
+import io.jsonwebtoken.ExpiredJwtException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler { 
@@ -114,5 +116,35 @@ public class GlobalExceptionHandler {
 		problemDetail.setProperty("Error Code", 11);
 		return List.of(problemDetail);
 	}
+	
+	@ExceptionHandler({BranchNotFoundException.class})
+	public List<ProblemDetail>hendleBranchNotFoundException(BranchNotFoundException branchNotFoundException){
+		problemDetail=ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR,
+				branchNotFoundException.getMessage());
+		problemDetail.setProperty("Error Code", 12);
+		return List.of(problemDetail);
+		
+	}
+	@ExceptionHandler({UserAllRedyPresent.class})
+	public List<ProblemDetail>UserAllRedyPresent(UserAllRedyPresent userAllRedyPresent){
+		problemDetail=ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR,
+				userAllRedyPresent.getMessage());
+		problemDetail.setProperty("Error Code", 13);
+		return List.of(problemDetail);
+		
+	}
+
+	
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<String> handleExpiredJwtException(ExpiredJwtException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body("Token has expired. Please login again to get a new token.");
+    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<String> handleGeneralException(Exception ex) {
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body("An error occurred: " + ex.getMessage());
+//    }
+    
 
 }

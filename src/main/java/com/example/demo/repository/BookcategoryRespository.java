@@ -8,4 +8,5 @@ import com.example.demo.entity.BookCategory;
 @Repository
 public interface BookcategoryRespository extends JpaRepository<BookCategory, Integer> {
 
+
 }

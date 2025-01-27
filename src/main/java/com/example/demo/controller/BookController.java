@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.custum.BookCountList;
+import com.example.demo.dto.ListBookStatus;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.BookAuthorsData;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class BookController {
 
 	@Autowired
@@ -89,5 +89,9 @@ public class BookController {
 	        countBook.put(book, count.intValue());
 	    }
 	    return countBook;
-	}    
+	}  
+	@GetMapping("/list-of-book")
+	public List<ListBookStatus>  getAllBook(@RequestBody Book book ) {
+		return bookService.ListofBook(book.status);	
+	}
 }

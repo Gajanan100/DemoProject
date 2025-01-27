@@ -5,14 +5,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.BookReview;
 import com.example.demo.entity.EmpRole;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.EmpRoleNotFoundException;
-import com.example.demo.repository.BookReviewRepository;
 import com.example.demo.repository.EmpRoleRepository;
 import com.example.demo.service.EmpRoleService;
 import com.example.demo.custum.EmployeeRoleData;

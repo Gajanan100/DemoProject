@@ -3,15 +3,14 @@ package com.example.demo.serviceImp;
 import java.util.List;
 import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.custum.AvaliableBook;
 import com.example.demo.custum.FindEmployeByRole;
 import com.example.demo.dto.employeeData;
 import com.example.demo.entity.Employee;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.EmployeeNotFoundException;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.service.EmployeeService;
@@ -21,9 +20,6 @@ public class EmployeeServiceImp implements EmployeeService {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
-	@Autowired
-	private ModelMapper modelMapper;
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -115,6 +111,20 @@ public class EmployeeServiceImp implements EmployeeService {
 				  rs.getString("contact"),
 				  rs.getString("permission")
 				  ),role );
+	}
+
+	@Override
+	public List<AvaliableBook> findBylibrarian() {
+		
+		String query="select e.position,e.library_id,e.depeartment,\r\n"
+				+ "b.book_name, b.status from employee e join booktables b \r\n"
+				+ "on e.book_id=b.book_id where b.status=1 and e.position=\"librariean\";";	
+		return jdbcTemplate.query(query, (rs,mapper)->new AvaliableBook(
+				rs.getString("position"),
+				rs.getString("depeartment"),
+				rs.getInt("library_id"),
+				rs.getString("book_name"),
+				rs.getBoolean("status")));
 	}
 
 }

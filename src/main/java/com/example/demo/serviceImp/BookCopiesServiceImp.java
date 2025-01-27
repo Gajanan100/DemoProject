@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.BookCopies;
-import com.example.demo.exception.AutherNotFoundException;
 import com.example.demo.exception.BookCopiesNotFoundException;
 import com.example.demo.repository.BookCopiesRepository;
 import com.example.demo.service.BookCopiesService;

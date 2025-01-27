@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.custum.AvaliableBook;
 import com.example.demo.custum.FindEmployeByRole;
 import com.example.demo.entity.Employee;
 
@@ -25,5 +26,7 @@ public interface EmployeeService {
 
 	public List<Object> getemployeeByLibrarys(String string);
 	public List<FindEmployeByRole> FindByemployeerole(String role);
+	
+	public List<AvaliableBook>findBylibrarian();
 	
 }

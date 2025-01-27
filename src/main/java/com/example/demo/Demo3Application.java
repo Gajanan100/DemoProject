@@ -13,11 +13,11 @@ public class Demo3Application {
 		System.out.println("Hello Controller..");
 	}
 
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 	
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
-
+	
 
 }

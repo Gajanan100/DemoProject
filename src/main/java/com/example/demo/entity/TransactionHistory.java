@@ -17,19 +17,19 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tranhistory")
+//@Embeddable
 public class TransactionHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int trans_id;
 	public Date borrow_date;
-	public Date late_date;
 	public Date return_date;
-	public double fineamount;
-
 	@Column(name = "book_id", nullable = false)
 	public int book_id;
 	@Column(name = "userId", nullable = false)
 	public int userId;
+	public boolean status;
 
 }
+

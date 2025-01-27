@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Author;
-import com.example.demo.repository.AuthorRepository;
 import com.example.demo.service.AuthorService;
 
 @RestController
@@ -23,8 +22,6 @@ public class AuthorController {
 	@Autowired
 	private AuthorService authorService;
 
-	@Autowired
-	private AuthorRepository authorRepository;
 
 	@PostMapping("/add-auther")
 	public Author addAuthor(@RequestBody Author author) {

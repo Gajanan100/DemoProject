@@ -29,7 +29,7 @@ public class BookReviewController {
 
 	}
 
-	@PostMapping("/get-all-bookReview")
+	@GetMapping("/get-all-bookReview")
 	public List<BookReview> getAllbookCopiesService() {
 		return bookReviewService.getallBookReview();
 	}

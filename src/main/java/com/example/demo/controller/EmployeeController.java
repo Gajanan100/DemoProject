@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.custum.AvaliableBook;
 import com.example.demo.custum.FindEmployeByRole;
 import com.example.demo.entity.EmpRole;
 import com.example.demo.entity.Employee;
@@ -101,7 +102,12 @@ public class EmployeeController {
 	
 	@GetMapping("/find-by-employee-role")
 	public List<FindEmployeByRole>getEmployeeByRole(@RequestBody EmpRole empRole){
-		return employeeService.FindByemployeerole(empRole.getRole());
+		return employeeService.FindByemployeerole(empRole.getRole());	
+	}
+	
+	@GetMapping("/avaliable-book")
+	public List<AvaliableBook> getAvaliablebook(){
+		return employeeService.findBylibrarian();
 		
 	}
 

@@ -15,10 +15,5 @@ public class UserBookTransData {
 	public String userName;
 	public String book_name;
 	public Date borrow_date;
-	public Date late_date;
-	public double fineamount;
-
-
-
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.custum.EmployeeRoleData;
 import com.example.demo.entity.EmpRole;
-import com.example.demo.repository.EmpRoleRepository;
 import com.example.demo.service.EmpRoleService;
 
 @RestController
@@ -21,8 +21,6 @@ public class EmpRoleController {
 	@Autowired
 	private EmpRoleService empRoleService;
 
-	@Autowired
-	private EmpRoleRepository empRoleRepository;
 
 	@PostMapping("/add-empRole")
 	public EmpRole addbookTransactionHistory(@RequestBody EmpRole empRole) {
@@ -31,7 +29,7 @@ public class EmpRoleController {
 
 	}
 
-	@PostMapping("/get-all-empRole")
+	@GetMapping("/get-all-empRole")
 	public List<EmpRole> getAllbookCopiesService() {
 		return empRoleService.getallEmpRole();
 	}
